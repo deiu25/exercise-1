@@ -80,7 +80,11 @@ const Counter = () => {
         />
       )}
       {name.map((item) => (
-        <div id={item} onClick={(e) => onClickDiv(e.target.id)}>
+        <div
+          id={item}
+          className="name"
+          onClick={(e) => onClickDiv(e.target.id)}
+        >
           {item}
         </div>
       ))}

@@ -29,3 +29,12 @@ input::placeholder {
   opacity: 0.5;
   color: blue;
 }
+
+.name {
+  padding: 7px;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 18px;
+  color: #005889;
+  cursor: pointer;
+}
