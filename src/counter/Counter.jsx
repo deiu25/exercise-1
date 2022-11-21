@@ -1,11 +1,23 @@
 import { useState } from "react";
 import "./Counter.css";
 import Button from "../button/Button";
+import { useMemo } from "react";
 
 const Counter = () => {
   const [value, setValue] = useState(0);
+  const [showDiv, setShowDiv] = useState(false);
+  const [name, setName] = useState([]);
 
-  const [show, setShow] = useState(false);
+  const nume = [
+    "Irina Ionescu",
+    "Andreea Vasilescu",
+    "Ioana Gerogescu",
+    "Ana Marinescu",
+    "Viorica Ipatescu",
+    "Veronica Ghinescu",
+    "Veronica Ghita",
+    "Diana Ghita",
+  ];
 
   const onMinusClick = () => {
     setValue((prevValue) => {
@@ -13,19 +25,37 @@ const Counter = () => {
     });
   };
 
+  useMemo(() => {
+    if (value === 10) {
+      setTimeout(() => {
+        setShowDiv(true);
+      }, 2000);
+    } else {
+      setShowDiv(false);
+    }
+  }, [value]);
+
   const onPlusClick = () => {
-    setValue((prevValue) => {
-      if (prevValue === 10) {
-        setShow(!show);
-      }
-      return ++prevValue;
-    });
+    setValue((prevValue) => prevValue + 1);
   };
 
   const onResetClick = () => {
     setValue((prevValue) => {
       return (prevValue = 0);
     });
+  };
+
+  const onClickDiv = (value) => {
+    setName([]);
+    document.getElementById("inputName").value = value;
+  };
+
+  const onSearchInInput = (value) => {
+    if (!value) return [];
+
+    return nume
+      .filter((item) => item.toLowerCase().includes(value.toLowerCase()))
+      .map((o) => o);
   };
 
   return (
@@ -39,7 +69,21 @@ const Counter = () => {
           INCRASE
         </Button>
       </div>
-      {show ? <h2>10 is the limit!</h2> : null}
+      {value === 10 ? <h2>10 is the limit!</h2> : null}
+      {showDiv && (
+        <input
+          id="inputName"
+          key="inputName"
+          placeholder="Search for a person"
+          type="text"
+          onChange={(e) => setName(onSearchInInput(e.target.value))}
+        />
+      )}
+      {name.map((item) => (
+        <div id={item} onClick={(e) => onClickDiv(e.target.id)}>
+          {item}
+        </div>
+      ))}
     </div>
   );
 };
