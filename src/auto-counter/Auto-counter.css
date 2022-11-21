@@ -1,0 +1,8 @@
+.value {
+  font-size: 40px;
+  color: #034603;
+}
+.counterDiv {
+  display: flex;
+  flex-direction: column;
+}

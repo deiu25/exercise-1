@@ -1,0 +1,17 @@
+.value {
+  font-size: 40px;
+  color: #034603;
+}
+.counterDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsDiv {
+  display: flex;
+  margin-top: 15px;
+}
+
+.limit {
+  display: none;
+}
