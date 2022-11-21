@@ -69,7 +69,7 @@ const Counter = () => {
           INCRASE
         </Button>
       </div>
-      {value === 10 ? <h2>10 is the limit!</h2> : null}
+      {value === 10 ? <h2 className="blink">10 is the limit!</h2> : null}
       {showDiv && (
         <input
           id="inputName"

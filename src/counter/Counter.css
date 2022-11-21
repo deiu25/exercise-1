@@ -38,3 +38,13 @@ input::placeholder {
   color: #005889;
   cursor: pointer;
 }
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
